@@ -1,0 +1,2 @@
+# Handmade_Pottery_Ceramics_Retail_Gallery
+Automated website repository for Handmade_Pottery_Ceramics_Retail_Gallery
