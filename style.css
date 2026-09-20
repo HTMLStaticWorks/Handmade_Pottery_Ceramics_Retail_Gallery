@@ -1207,18 +1207,25 @@ footer::before{
 
 .newsletter{
   display:flex;
-  gap:8px;
+  align-items:center;
+  gap:10px;
+  margin-top:12px;
+  width:100%;
 }
 
 .newsletter input{
+  display:block;
+  flex:1;
+  height:44px;
+  margin:0;
   background:#fbf8f2;
   border:1px solid rgba(43, 41, 37, 0.18);
   border-radius:25px;
   color:#2b2925;
-  padding:10px 16px;
+  padding:0 18px;
   font-size:14px;
   outline:none;
-  width:100%;
+  box-sizing:border-box;
   transition:border-color 0.3s ease, background 0.3s ease;
 }
 
@@ -1235,15 +1242,17 @@ footer::before{
   background:#8d6049;
   border:none;
   border-radius:50%;
-  width:38px;
-  height:38px;
+  width:44px;
+  height:44px;
+  margin:0;
   color:#ffffff;
   font-size:16px;
-  display:flex;
+  display:inline-flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
   flex-shrink:0;
+  box-sizing:border-box;
   transition:all 0.3s ease;
 }
 
@@ -1932,5 +1941,476 @@ textarea{min-height:120px;resize:vertical}
 @media(max-width:768px) {
   .materials-grid, .interior-grid, .journal-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   THEME & RTL HEADER TOGGLE BUTTONS (IDENTICAL HEIGHT & SHAPE)
+   ========================================================================== */
+.theme-toggle-btn, .rtl-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 14px;
+  background: var(--bg-secondary, #efe3d4);
+  color: var(--text-primary, #2b2925);
+  border: 1px solid var(--border-color, rgba(43, 41, 37, 0.15));
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+.theme-toggle-btn {
+  padding: 0 10px;
+  min-width: 36px;
+}
+
+.theme-toggle-btn:hover, .rtl-toggle-btn:hover {
+  background: #8d6049;
+  color: #ffffff;
+  border-color: #8d6049;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(141, 96, 73, 0.25);
+}
+
+.theme-toggle-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.4s ease;
+}
+
+.theme-toggle-btn:hover svg {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* ==========================================================================
+   DARK THEME SYSTEM (data-theme="dark") — PERFECT VISIBILITY & HIGH CONTRAST
+   ========================================================================== */
+[data-theme="dark"] {
+  --bg-primary: #171513;
+  --bg-secondary: #221f1c;
+  --bg-card: #221f1c;
+  --bg-header: rgba(23, 21, 19, 0.95);
+  --text-primary: #f5efe6;
+  --text-secondary: #d6cdbf;
+  --text-muted: #9e9486;
+  --accent-color: #d68d68;
+  --border-color: rgba(245, 239, 230, 0.12);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Header & Brand Logo Visibility */
+[data-theme="dark"] .site-header {
+  background: var(--bg-header);
+  border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .brand-logo-img {
+  filter: brightness(2.2) contrast(1.2) drop-shadow(0 0 1px rgba(255, 255, 255, 0.5));
+}
+
+[data-theme="dark"] .brand,
+[data-theme="dark"] .nav a {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .nav a:hover {
+  background: rgba(214, 141, 104, 0.18);
+  color: #d68d68;
+}
+
+[data-theme="dark"] .nav a.active {
+  background: #2a2622;
+  color: var(--text-primary);
+  box-shadow: inset 0 0 0 1px var(--border-color);
+}
+
+/* Headings & Text Color Fixes Across All Sections */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .section-head h2,
+[data-theme="dark"] .guarantee-header h2,
+[data-theme="dark"] .guarantee-card h4,
+[data-theme="dark"] .breakdown-column h3,
+[data-theme="dark"] .notes-mat-content h3,
+[data-theme="dark"] .usecase-card h3,
+[data-theme="dark"] .journal-card h3,
+[data-theme="dark"] .process-card h3,
+[data-theme="dark"] .craft-highlight-item strong,
+[data-theme="dark"] .maker-quote-box p,
+[data-theme="dark"] .product-meta h3,
+[data-theme="dark"] .product-meta strong {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] .hero-text,
+[data-theme="dark"] .guarantee-header p,
+[data-theme="dark"] .guarantee-card p,
+[data-theme="dark"] .breakdown-list li,
+[data-theme="dark"] .notes-mat-content p,
+[data-theme="dark"] .craft-highlight-item p,
+[data-theme="dark"] .usecase-card p,
+[data-theme="dark"] .journal-card p,
+[data-theme="dark"] .footer-note,
+[data-theme="dark"] .muted,
+[data-theme="dark"] .product-meta p {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .eyebrow,
+[data-theme="dark"] .breakdown-tag,
+[data-theme="dark"] .notes-mat-tag,
+[data-theme="dark"] .breakdown-list li strong,
+[data-theme="dark"] .footer-label {
+  color: #d68d68 !important;
+}
+
+/* Card & Section Containers in Dark Mode */
+[data-theme="dark"] .maker-quote-box,
+[data-theme="dark"] .usecase-card,
+[data-theme="dark"] .journal-card,
+[data-theme="dark"] .process-card,
+[data-theme="dark"] .testimonial-card,
+[data-theme="dark"] .shop-guarantee-section,
+[data-theme="dark"] .guarantee-card,
+[data-theme="dark"] .breakdown-column,
+[data-theme="dark"] .notes-mat-card,
+[data-theme="dark"] .notes-lead-box,
+[data-theme="dark"] .kiln-journal,
+[data-theme="dark"] .interior-gallery {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .guarantee-card {
+  background: #1d1a17 !important;
+}
+
+[data-theme="dark"] .breakdown-column h3 {
+  border-bottom-color: var(--border-color) !important;
+}
+
+/* Footer Styling in Dark Mode */
+[data-theme="dark"] footer {
+  background: #11100e;
+  border-top-color: var(--border-color);
+}
+
+[data-theme="dark"] .footer-contact-info span,
+[data-theme="dark"] .footer-links a {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .footer-contact-info a {
+  color: #d68d68;
+}
+
+[data-theme="dark"] .footer-contact-info a:hover,
+[data-theme="dark"] .footer-links a:hover {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .footer-newsletter-box {
+  background: #1d1a17;
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .footer-newsletter-box p {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .footer-newsletter-box form input {
+  background: #23201c;
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .footer-newsletter-box form input::placeholder {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .footer-newsletter-box form button {
+  background: #d68d68;
+  color: #171513;
+}
+
+[data-theme="dark"] .socials a {
+  background: #23201c;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .socials a:hover {
+  background: #d68d68;
+  color: #171513;
+  border-color: #d68d68;
+}
+
+/* Buttons, Floating Elements & Inputs */
+[data-theme="dark"] .button-dark {
+  background: #d68d68;
+  color: #171513;
+}
+
+[data-theme="dark"] .button-dark:hover {
+  background: #f5efe6;
+  color: #171513;
+}
+
+[data-theme="dark"] .button-light {
+  background: #2a2622;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .button-light:hover {
+  background: #d68d68;
+  color: #171513;
+}
+
+[data-theme="dark"] .quick {
+  background: rgba(23, 21, 19, 0.92);
+  color: #f5efe6;
+}
+
+[data-theme="dark"] .quick:hover {
+  background: #d68d68;
+  color: #171513;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background: #1d1a17;
+  color: #f5efe6;
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .floating-note {
+  background: rgba(34, 31, 28, 0.94);
+  color: #f5efe6;
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .floating-note strong {
+  color: #d68d68;
+}
+
+[data-theme="dark"] .modal-content {
+  background: #221f1c;
+  color: #f5efe6;
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .back-top {
+  background: #23201c;
+  color: #f5efe6;
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .back-top:hover {
+  background: #d68d68;
+  color: #171513;
+}
+
+/* ==========================================================================
+   100% RTL LAYOUT & ALIGNMENT SYSTEM (dir="rtl")
+   ========================================================================== */
+[dir="rtl"] {
+  font-family: "Cairo", "Inter", system-ui, -apple-system, sans-serif;
+  text-align: right;
+  direction: rtl;
+}
+
+/* Site Header Alignment in RTL */
+[dir="rtl"] .site-header {
+  direction: rtl;
+  flex-direction: row;
+}
+
+[dir="rtl"] .site-header .brand {
+  order: 1;
+}
+
+[dir="rtl"] .site-header .nav {
+  order: 2;
+  direction: rtl;
+  flex-direction: row;
+}
+
+[dir="rtl"] .site-header .header-actions {
+  order: 3;
+  direction: rtl;
+  flex-direction: row;
+}
+
+[dir="rtl"] .nav a.active::after {
+  margin-left: 0;
+  margin-right: 6px;
+}
+
+/* Hero Section Alignment */
+[dir="rtl"] .hero {
+  direction: rtl;
+}
+
+[dir="rtl"] .hero-copy {
+  text-align: right;
+}
+
+[dir="rtl"] .floating-note {
+  right: auto;
+  left: -14px;
+}
+
+/* Intro Section Editorial Collage & Quote Box */
+[dir="rtl"] .intro-editorial-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .intro-editorial-copy {
+  text-align: right;
+}
+
+[dir="rtl"] .maker-quote-box {
+  border-left: none;
+  border-right: 3px solid #8d6049;
+  border-radius: 10px 0 0 10px;
+  text-align: right;
+}
+
+[dir="rtl"] .collage-tag {
+  left: auto;
+  right: 18px;
+}
+
+[dir="rtl"] .collage-sub-frame {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .collage-main-frame {
+  left: auto;
+  right: 0;
+}
+
+/* Craft Highlights Bar */
+[dir="rtl"] .craft-highlights-bar {
+  direction: rtl;
+}
+
+[dir="rtl"] .craft-highlight-item {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Grids Across All Pages */
+[dir="rtl"] .collection-grid,
+[dir="rtl"] .process-grid,
+[dir="rtl"] .product-grid,
+[dir="rtl"] .testimonials-grid,
+[dir="rtl"] .usecases-grid,
+[dir="rtl"] .guarantee-grid,
+[dir="rtl"] .materials-grid,
+[dir="rtl"] .interior-grid,
+[dir="rtl"] .journal-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .section-head {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .process-card,
+[dir="rtl"] .usecase-card,
+[dir="rtl"] .journal-card,
+[dir="rtl"] .testimonial-card,
+[dir="rtl"] .product-card,
+[dir="rtl"] .material-card,
+[dir="rtl"] .guarantee-card {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Buttons & Icons */
+[dir="rtl"] .header-connect-btn svg {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .header-connect-btn:hover svg {
+  transform: scaleX(-1) translate(2px, -2px);
+}
+
+[dir="rtl"] .button {
+  direction: rtl;
+}
+
+/* Footer Alignment */
+[dir="rtl"] footer {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-brand-col,
+[dir="rtl"] .footer-links,
+[dir="rtl"] .footer-newsletter-col {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-newsletter-box form,
+[dir="rtl"] .newsletter {
+  direction: rtl;
+  align-items: center;
+}
+
+[dir="rtl"] .footer-newsletter-box button,
+[dir="rtl"] .newsletter button {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .footer-bottom {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-bottom-badges {
+  direction: rtl;
+}
+
+[dir="rtl"] .back-top {
+  right: auto;
+  left: 28px;
+}
+
+/* Mobile Nav Drawer Alignment */
+@media (max-width: 900px) {
+  [dir="rtl"] .nav {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+    text-align: right;
+  }
+  [dir="rtl"] .nav.open {
+    transform: translateX(0);
   }
 }
