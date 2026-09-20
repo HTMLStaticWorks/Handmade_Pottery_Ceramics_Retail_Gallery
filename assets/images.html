@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KADAVA — 40 Image Reference Library</title>
+  <style>
+    :root {
+      --bg: #f5f0e7;
+      --paper: #fbf8f2;
+      --ink: #2b2925;
+      --muted: #746d63;
+      --line: #d8d0c4;
+      --accent: #a75f3d;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif
+    }
+
+    header {
+      padding: 48px 6vw 28px;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: rgba(245, 240, 231, .94);
+      backdrop-filter: blur(10px);
+      z-index: 5
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(36px, 6vw, 76px);
+      line-height: .95;
+      margin: 12px 0
+    }
+
+    .lead {
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      padding: 9px 13px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px
+    }
+
+    .filter.active,
+    .filter:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink)
+    }
+
+    main {
+      padding: 34px 6vw 70px
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      min-width: 0
+    }
+
+    .image-link {
+      display: block;
+      background: #e7e0d4;
+      aspect-ratio: 4/3;
+      overflow: hidden
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .45s ease
+    }
+
+    .card:hover img {
+      transform: scale(1.035)
+    }
+
+    .card-body {
+      padding: 16px 17px 18px;
+      position: relative
+    }
+
+    .number {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .1em
+    }
+
+    .tag {
+      float: right;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    .card h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 20px;
+      line-height: 1.15;
+      margin: 28px 0 15px
+    }
+
+    .source {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px
+    }
+
+    .source:hover {
+      color: var(--accent);
+      border-color: var(--accent)
+    }
+
+    .card.image-error {
+      opacity: .65
+    }
+
+    .card.image-error::after {
+      content: 'Image unavailable — open source';
+      display: block;
+      padding: 0 17px 16px;
+      color: #a34f3c;
+      font-size: 12px
+    }
+
+    .notice {
+      margin: 0 0 28px;
+      padding: 15px 17px;
+      background: #eee7dc;
+      border-left: 3px solid var(--accent);
+      font-size: 13px;
+      line-height: 1.6;
+      color: #5e574f
+    }
+
+    footer {
+      padding: 28px 6vw;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6
+    }
+
+    @media(max-width:1100px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+      }
+    }
+
+    @media(max-width:760px) {
+      header {
+        position: relative;
+        padding: 32px 5vw 22px
+      }
+
+      main {
+        padding: 24px 5vw 50px
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px
+      }
+
+      .card h2 {
+        font-size: 17px
+      }
+    }
+
+    @media(max-width:500px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      .image-link {
+        aspect-ratio: 16/11
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="eyebrow">KADAVA · Image Library</div>
+    <h1>40 ceramic images</h1>
+    <p class="lead">A curated reference set for KADAVA’s Home, Home2, Shop, Collections, Artspace, Studio, Commissions
+      and Connect experience.</p>
+    <div class="controls"><button class="filter active" data-filter="all">All 40</button><button class="filter"
+        data-filter="Artisan">Artisan</button><button class="filter" data-filter="Artspace">Artspace</button><button
+        class="filter" data-filter="Dining">Dining</button><button class="filter"
+        data-filter="Drinkware">Drinkware</button><button class="filter" data-filter="Market">Market</button><button
+        class="filter" data-filter="Studio">Studio</button><button class="filter" data-filter="Studio Craft">Studio
+        Craft</button><button class="filter" data-filter="Tableware">Tableware</button><button class="filter"
+        data-filter="Vessels">Vessels</button><button class="filter" data-filter="Workshop">Workshop</button></div>
+  </header>
+  <main>
+    <div class="notice"><strong>Important:</strong> These are real web-sourced image references. The source URL is
+      included for every image. Copyright or commercial reuse is not automatically granted; confirm the source’s license
+      or obtain permission before using an image in a live KADAVA deployment.</div>
+    <section class="grid" id="gallery">
+
+      <article class="card" data-category="Studio Craft" data-title="potter at work on wheel">
+        <a class="image-link"
+          href="https://www.livemint.com/Leisure/qEiNqXcfSJnL6xgnaf8X5M/Kumhar-Gram-A-Song-of-Earth-and-Fire.html"
+          target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2017/09/30/Photos/Processed/pottervillage1-k6bG--621x414%40LiveMint.jpg"
+            alt="Potter at work on wheel" loading="lazy" onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">01</span>
+          <span class="tag">Studio Craft</span>
+          <h2>Potter at work on wheel</h2>
+          <a class="source"
+            href="https://www.livemint.com/Leisure/qEiNqXcfSJnL6xgnaf8X5M/Kumhar-Gram-A-Song-of-Earth-and-Fire.html"
+            target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Studio Craft" data-title="pottery wheel crafting">
+        <a class="image-link"
+          href="https://www.kanpurwants.com/new-on-kanpurwants/get-to-know-all-about-this-pottery-studio-in-kanpur"
+          target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://media.assettype.com/kanpurwants/2024-01/a63af82c-451e-417c-a194-4998f8ec193d/Solar_Craft_1.jpg?auto=format%2Ccompress&amp;fit=max&amp;w=640"
+            alt="Pottery wheel crafting" loading="lazy" onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">02</span>
+          <span class="tag">Studio Craft</span>
+          <h2>Pottery wheel crafting</h2>
+          <a class="source"
+            href="https://www.kanpurwants.com/new-on-kanpurwants/get-to-know-all-about-this-pottery-studio-in-kanpur"
+            target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Workshop" data-title="pottery wheel workshop">
+        <a class="image-link" href="https://www.iamalive.app/experiences/pottery-workshop" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://www.iamalive.app/_next/image?q=75&amp;url=https%3A%2F%2Fcdn.iamalive.app%2Fprocessed%2Fcard%2FMaati_sona_Shortlisted-156_20250807073408071ZZ.webp&amp;w=1920"
+            alt="Pottery wheel workshop" loading="lazy" onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">03</span>
+          <span class="tag">Workshop</span>
+          <h2>Pottery wheel workshop</h2>
+          <a class="source" href="https://www.iamalive.app/experiences/pottery-workshop" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Studio Craft" data-title="potter&#x27;s wheel in goa">
+        <a class="image-link"
+          href="https://www.gomantaktimes.com/lifestyle/shaping-careers-with-the-potters-wheel-in-goa" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://media.assettype.com/gomantaktimes%2F2024-02%2F47ad32bd-10c2-42f4-b559-694a7cd25c84%2Fpo3.JPG"
+            alt="Potter&#x27;s wheel in Goa" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">04</span>
+          <span class="tag">Studio Craft</span>
+          <h2>Potter&#x27;s wheel in Goa</h2>
+          <a class="source" href="https://www.gomantaktimes.com/lifestyle/shaping-careers-with-the-potters-wheel-in-goa"
+            target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Studio Craft" data-title="pottery workshop in kodai hills">
+        <a class="image-link" href="https://www.trulylostsupply.com/blogs/field-journal/made-in-the-mountains"
+          target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.shopify.com/s/files/1/2313/5161/files/IMG_20160823_133745_1024x1024.jpg?v=1505864873"
+            alt="Pottery workshop in Kodai Hills" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">05</span>
+          <span class="tag">Studio Craft</span>
+          <h2>Pottery workshop in Kodai Hills</h2>
+          <a class="source" href="https://www.trulylostsupply.com/blogs/field-journal/made-in-the-mountains"
+            target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Studio Craft" data-title="community art studio potter">
+        <a class="image-link"
+          href="https://www.hindustantimes.com/delhi/garhi-art-haven-withers-away/story-R8a1MiQT0PVhi3PK32tZlO_amp.html"
+          target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://images.hindustantimes.com/rf/image_size_800x600/HT/p2/2016/08/03/Pictures/affordable-scholarships-sculptures-sculptures-tribhuwan-scholarships-affordable_c333bdb4-596e-11e6-92e9-543a978214ab.jpg"
+            alt="Community art studio potter" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">06</span>
+          <span class="tag">Studio Craft</span>
+          <h2>Community art studio potter</h2>
+          <a class="source"
+            href="https://www.hindustantimes.com/delhi/garhi-art-haven-withers-away/story-R8a1MiQT0PVhi3PK32tZlO_amp.html"
+            target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Studio Craft" data-title="slow pottery wheel throwing">
+        <a class="image-link" href="https://www.slowpottery.com/" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.slowpottery.com/cdn/shop/files/IMG_0769_560x709.jpg?v=1723099866"
+            alt="Slow Pottery wheel throwing" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">07</span>
+          <span class="tag">Studio Craft</span>
+          <h2>Slow Pottery wheel throwing</h2>
+          <a class="source" href="https://www.slowpottery.com/" target="_blank" rel="noopener noreferrer">Open source
+            ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Studio Craft" data-title="potter at work in auroville">
+        <a class="image-link"
+          href="https://potsandpieces.wordpress.com/2014/06/06/the-dana-pottery-community-auroville-part-3-oil-burners/"
+          target="_blank" rel="noopener noreferrer">
+          <img src="https://potsandpieces.files.wordpress.com/2014/06/a1793-dsc03977.jpg"
+            alt="Potter at work in Auroville" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">08</span>
+          <span class="tag">Studio Craft</span>
+          <h2>Potter at work in Auroville</h2>
+          <a class="source"
+            href="https://potsandpieces.wordpress.com/2014/06/06/the-dana-pottery-community-auroville-part-3-oil-burners/"
+            target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Tableware" data-title="sofia ceramics tableware display">
+        <a class="image-link" href="https://www.sofiaceramics.com/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://static.wixstatic.com/media/dc993f_97a6704693cb4fafbad5bdfbb5e1f3fa~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/dc993f_97a6704693cb4fafbad5bdfbb5e1f3fa~mv2.jpg"
+            alt="Sofia Ceramics tableware display" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">09</span>
+          <span class="tag">Tableware</span>
+          <h2>Sofia Ceramics tableware display</h2>
+          <a class="source" href="https://www.sofiaceramics.com/" target="_blank" rel="noopener noreferrer">Open source
+            ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Vessels" data-title="speckled ceramic pouch vase">
+        <a class="image-link" href="https://bayrampasahobi.com/ham-seramik-kucuk-boy-benekli-kese-vazo" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://cdn.myikas.com/images/fd0e7424-d5fe-43c9-bc06-d2bbb1850aed/09a22244-1563-47e9-8ed5-5c7395b2889e/3840/cae0a930-d2ae-4ee0-92b0-ac7342c50a53-1-105-c.webp"
+            alt="Speckled ceramic pouch vase" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">10</span>
+          <span class="tag">Vessels</span>
+          <h2>Speckled ceramic pouch vase</h2>
+          <a class="source" href="https://bayrampasahobi.com/ham-seramik-kucuk-boy-benekli-kese-vazo" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Studio" data-title="srishti dube ceramic studio">
+        <a class="image-link" href="https://www.coroflot.com/Srishtidube4" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://s3images.coroflot.com/user_files/individual_files/avatars/large_avatar_619585_bpbx9plvlqod8vv5lahb6lzyx.jpg"
+            alt="Srishti Dube ceramic studio" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">11</span>
+          <span class="tag">Studio</span>
+          <h2>Srishti Dube ceramic studio</h2>
+          <a class="source" href="https://www.coroflot.com/Srishtidube4" target="_blank" rel="noopener noreferrer">Open
+            source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Studio" data-title="sandpoint ceramics studio showcase">
+        <a class="image-link" href="https://www.sandpointceramics.com/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://static.wixstatic.com/media/ab9121_84519cc8d3e144a28798225bfaca7c50~mv2.jpg/v1/fill/w_980%2Ch_1307%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/SUITE%20203.jpg"
+            alt="Sandpoint ceramics studio showcase" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">12</span>
+          <span class="tag">Studio</span>
+          <h2>Sandpoint ceramics studio showcase</h2>
+          <a class="source" href="https://www.sandpointceramics.com/" target="_blank" rel="noopener noreferrer">Open
+            source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Vessels" data-title="handmade ceramic vase with dried stems">
+        <a class="image-link" href="https://muddept.com/" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.shopify.com/s/files/1/0601/4002/8137/files/Copy_of_Lea_Durie-54.jpg?v=1658565423"
+            alt="Handmade ceramic vase with dried stems" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">13</span>
+          <span class="tag">Vessels</span>
+          <h2>Handmade ceramic vase with dried stems</h2>
+          <a class="source" href="https://muddept.com/" target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Vessels" data-title="sand dune ceramic vase with tulips">
+        <a class="image-link" href="https://www.authorceramics.com/collections/vases" target="_blank"
+          rel="noopener noreferrer">
+          <img src="https://www.authorceramics.com/cdn/shop/files/Poppy-Vase-Sand-Dune-15_940x.jpg?v=1715391659"
+            alt="Sand dune ceramic vase with tulips" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">14</span>
+          <span class="tag">Vessels</span>
+          <h2>Sand dune ceramic vase with tulips</h2>
+          <a class="source" href="https://www.authorceramics.com/collections/vases" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Studio" data-title="pottery studio crafting">
+        <a class="image-link" href="https://rangaai.com/products/parijat-earth-kurta" target="_blank"
+          rel="noopener noreferrer">
+          <img src="https://rangaai.com/cdn/shop/files/file_13.jpg?v=1718188919&amp;width=800"
+            alt="Pottery studio crafting" loading="lazy" onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">15</span>
+          <span class="tag">Studio</span>
+          <h2>Pottery studio crafting</h2>
+          <a class="source" href="https://rangaai.com/products/parijat-earth-kurta" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Vessels" data-title="ceramic vase with blossoming branches">
+        <a class="image-link" href="https://www.ataceramics.nz/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://static.wixstatic.com/media/f7b853_1bd9d97bd9a34db7acebd3271c4d1681~mv2.jpg/v1/fill/w_744%2Ch_588%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/ata-ceramics-studio-vase.jpg"
+            alt="Ceramic vase with blossoming branches" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">16</span>
+          <span class="tag">Vessels</span>
+          <h2>Ceramic vase with blossoming branches</h2>
+          <a class="source" href="https://www.ataceramics.nz/" target="_blank" rel="noopener noreferrer">Open source
+            ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Drinkware" data-title="a clay story glazed tumblers">
+        <a class="image-link" href="https://aclaystory.com/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://aclaystory.com/cdn/shop/collections/WhatsApp_Image_2026-07-30_at_11.19.51_AM.jpg?v=1785523300&amp;width=1500"
+            alt="A Clay Story glazed tumblers" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">17</span>
+          <span class="tag">Drinkware</span>
+          <h2>A Clay Story glazed tumblers</h2>
+          <a class="source" href="https://aclaystory.com/" target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Vessels" data-title="a clay story vases">
+        <a class="image-link" href="https://aclaystory.com/" target="_blank" rel="noopener noreferrer">
+          <img src="https://aclaystory.com/cdn/shop/collections/V09-4.jpg?v=1785554709&amp;width=1500"
+            alt="A Clay Story vases" loading="lazy" onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">18</span>
+          <span class="tag">Vessels</span>
+          <h2>A Clay Story vases</h2>
+          <a class="source" href="https://aclaystory.com/" target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Drinkware" data-title="a clay story painted tumblers">
+        <a class="image-link" href="https://aclaystory.com/" target="_blank" rel="noopener noreferrer">
+          <img src="https://aclaystory.com/cdn/shop/collections/tumblers-2.jpg?v=1785467214&amp;width=1500"
+            alt="A Clay Story painted tumblers" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">19</span>
+          <span class="tag">Drinkware</span>
+          <h2>A Clay Story painted tumblers</h2>
+          <a class="source" href="https://aclaystory.com/" target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Dining" data-title="a clay story plated food styling">
+        <a class="image-link" href="https://aclaystory.com/" target="_blank" rel="noopener noreferrer">
+          <img src="https://aclaystory.com/cdn/shop/collections/food-29.jpg?v=1759632180&amp;width=1500"
+            alt="A Clay Story plated food styling" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">20</span>
+          <span class="tag">Dining</span>
+          <h2>A Clay Story plated food styling</h2>
+          <a class="source" href="https://aclaystory.com/" target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Dining" data-title="a clay story breakfast tableware">
+        <a class="image-link" href="https://aclaystory.com/" target="_blank" rel="noopener noreferrer">
+          <img src="https://aclaystory.com/cdn/shop/collections/eat_all-1.jpg?v=1785467163&amp;width=1500"
+            alt="A Clay Story breakfast tableware" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">21</span>
+          <span class="tag">Dining</span>
+          <h2>A Clay Story breakfast tableware</h2>
+          <a class="source" href="https://aclaystory.com/" target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Artspace" data-title="mandala pottery outdoor collection">
+        <a class="image-link" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/684fb4071e017004de7840f3/378e8b64-91b4-48c6-bec8-7117f7f809e9/WhatsApp%2BImage%2B2025-06-12%2Bat%2B8.28.30%2BAM.jpg"
+            alt="Mandala pottery outdoor collection" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">22</span>
+          <span class="tag">Artspace</span>
+          <h2>Mandala pottery outdoor collection</h2>
+          <a class="source" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Artspace" data-title="mandala sculptural vessel">
+        <a class="image-link" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/684fb4071e017004de7840f3/1772297842189-53AIKLKZXOEKPM72DSMS/image-asset.jpeg"
+            alt="Mandala sculptural vessel" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">23</span>
+          <span class="tag">Artspace</span>
+          <h2>Mandala sculptural vessel</h2>
+          <a class="source" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Artspace" data-title="mandala ceramic bowls and trays">
+        <a class="image-link" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/684fb4071e017004de7840f3/1772250698847-D84KBA7W6KFBEYE4YV6B/image-asset.jpeg"
+            alt="Mandala ceramic bowls and trays" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">24</span>
+          <span class="tag">Artspace</span>
+          <h2>Mandala ceramic bowls and trays</h2>
+          <a class="source" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Artspace" data-title="mandala colored ceramic bowls">
+        <a class="image-link" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/684fb4071e017004de7840f3/1771791795469-ISNA21CHCOW8XVMJMORI/image-asset.jpeg"
+            alt="Mandala colored ceramic bowls" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">25</span>
+          <span class="tag">Artspace</span>
+          <h2>Mandala colored ceramic bowls</h2>
+          <a class="source" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Artspace" data-title="mandala hand-built vessels">
+        <a class="image-link" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/684fb4071e017004de7840f3/1769880652673-8JXECDYV51NDFXF7SUEH/image-asset.jpeg"
+            alt="Mandala hand-built vessels" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">26</span>
+          <span class="tag">Artspace</span>
+          <h2>Mandala hand-built vessels</h2>
+          <a class="source" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Artspace" data-title="mandala sculptural bowl">
+        <a class="image-link" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/684fb4071e017004de7840f3/1768325100007-C0KAZ613T3IZPOUA1K69/image-asset.jpeg"
+            alt="Mandala sculptural bowl" loading="lazy" onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">27</span>
+          <span class="tag">Artspace</span>
+          <h2>Mandala sculptural bowl</h2>
+          <a class="source" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Artspace" data-title="mandala ceramic artwork">
+        <a class="image-link" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/684fb4071e017004de7840f3/1767712860373-H9GUZ0LKG41WMQJJAA8V/image-asset.jpeg"
+            alt="Mandala ceramic artwork" loading="lazy" onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">28</span>
+          <span class="tag">Artspace</span>
+          <h2>Mandala ceramic artwork</h2>
+          <a class="source" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Artspace" data-title="mandala outdoor ceramic piece">
+        <a class="image-link" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/684fb4071e017004de7840f3/1766343376373-A9ZCEYTCJLWGGEXIENJO/image-asset.jpeg"
+            alt="Mandala outdoor ceramic piece" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">29</span>
+          <span class="tag">Artspace</span>
+          <h2>Mandala outdoor ceramic piece</h2>
+          <a class="source" href="https://www.mandalapottery.com/our-pottery" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Artisan" data-title="adil writer ceramic collection">
+        <a class="image-link" href="https://uppercrustindia.com/v3/posts/555/eat-clay-love-adil-writer-s-mantra"
+          target="_blank" rel="noopener noreferrer">
+          <img src="https://uppercrustindia.com/2019/media/postassets/2021/Nov/25/image-20211125195119-1_0.png"
+            alt="Adil Writer ceramic collection" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">30</span>
+          <span class="tag">Artisan</span>
+          <h2>Adil Writer ceramic collection</h2>
+          <a class="source" href="https://uppercrustindia.com/v3/posts/555/eat-clay-love-adil-writer-s-mantra"
+            target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Artisan" data-title="suresh at mandala pottery wheel">
+        <a class="image-link" href="https://www.mandalapottery.com/history" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/684fb4071e017004de7840f3/aa2c194d-0b95-4fb2-a7be-c5e6013e317f/Suresh.jpg"
+            alt="Suresh at Mandala pottery wheel" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">31</span>
+          <span class="tag">Artisan</span>
+          <h2>Suresh at Mandala pottery wheel</h2>
+          <a class="source" href="https://www.mandalapottery.com/history" target="_blank" rel="noopener noreferrer">Open
+            source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Market" data-title="auroville potters market">
+        <a class="image-link"
+          href="https://www.newindianexpress.com/states/tamil-nadu/2016/Jan/23/art-shines-at-second-edition-of-the-auroville-international-potters-market-held-at-visitors-centre-872577.html"
+          target="_blank" rel="noopener noreferrer">
+          <img src="https://media.newindianexpress.com/TNIE%2Fimport%2F2016%2F1%2F23%2F21%2Foriginal%2F23pdypot3.JPG"
+            alt="Auroville potters market" loading="lazy" onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">32</span>
+          <span class="tag">Market</span>
+          <h2>Auroville potters market</h2>
+          <a class="source"
+            href="https://www.newindianexpress.com/states/tamil-nadu/2016/Jan/23/art-shines-at-second-edition-of-the-auroville-international-potters-market-held-at-visitors-centre-872577.html"
+            target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Studio" data-title="nested ceramic bowls">
+        <a class="image-link"
+          href="https://www.hamishjacksonpottery.com/blog/2014/05/the-dana-pottery-community-auroville.html"
+          target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/5ab6addce2ccd1996fe8e2d0/1521930668498-WAHTPPG0QHGAGPR3L7B2/image-asset.jpeg?content-type=image%2Fjpeg&amp;format=1000w"
+            alt="Nested ceramic bowls" loading="lazy" onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">33</span>
+          <span class="tag">Studio</span>
+          <h2>Nested ceramic bowls</h2>
+          <a class="source"
+            href="https://www.hamishjacksonpottery.com/blog/2014/05/the-dana-pottery-community-auroville.html"
+            target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Tableware" data-title="mantra handcrafted plate set">
+        <a class="image-link" href="https://www.auroville.com/products/mantra-plate-set" target="_blank"
+          rel="noopener noreferrer">
+          <img src="https://www.auroville.com/cdn/shop/files/cm-30-blue-slip--_6__1.jpg?v=1727275602&amp;width=1946"
+            alt="Mantra handcrafted plate set" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">34</span>
+          <span class="tag">Tableware</span>
+          <h2>Mantra handcrafted plate set</h2>
+          <a class="source" href="https://www.auroville.com/products/mantra-plate-set" target="_blank"
+            rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Workshop" data-title="slow pottery workshop session">
+        <a class="image-link"
+          href="https://www.slowpottery.com/pages/velanga-orchard-x-slow-pottery-residential-courses" target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="https://cdn.shopify.com/s/files/1/2784/4712/files/Slowpottery_Store_Update_Been_A_While-2_480x480.jpg?v=1711793384"
+            alt="Slow Pottery workshop session" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">35</span>
+          <span class="tag">Workshop</span>
+          <h2>Slow Pottery workshop session</h2>
+          <a class="source" href="https://www.slowpottery.com/pages/velanga-orchard-x-slow-pottery-residential-courses"
+            target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article>
+
+      <!-- <article class="card" data-category="Studio" data-title="claysutra pottery display">
+        <a class="image-link" href="https://lbb.in/hyderabad/claysutra-studio-secunderabad/" target="_blank" rel="noopener noreferrer">
+          <img src="https://imgmediagumlet.lbb.in/43914506_730448467310436_5291782933753236625_n_1569561683752.jpg" alt="Claysutra pottery display" loading="lazy"
+               onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">36</span>
+          <span class="tag">Studio</span>
+          <h2>Claysutra pottery display</h2>
+          <a class="source" href="https://lbb.in/hyderabad/claysutra-studio-secunderabad/" target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </article> -->
+
+      <article class="card" data-category="Tableware" data-title="emma lacey everyday mugs">
+        <a class="image-link" href="https://www.emmalacey.com/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/62f4bf05abd1ea03de24eb60/74c2a024-b892-4d21-9041-9c1fe435b08b/Product_047.jpg"
+            alt="Emma Lacey everyday mugs" loading="lazy" onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">37</span>
+          <span class="tag">Tableware</span>
+          <h2>Emma Lacey everyday mugs</h2>
+          <a class="source" href="https://www.emmalacey.com/" target="_blank" rel="noopener noreferrer">Open source
+            ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Tableware" data-title="emma lacey blue scale mugs">
+        <a class="image-link" href="https://www.emmalacey.com/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/62f4bf05abd1ea03de24eb60/1663577283868-AHSWTXSEPECNVM63KFSD/Blue-Scale-Everyday-Mugs-Phot-cred-Yeshen-Venema-Emma-Lacey-2.9.196173-1-1118x1118.jpg"
+            alt="Emma Lacey blue scale mugs" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">38</span>
+          <span class="tag">Tableware</span>
+          <h2>Emma Lacey blue scale mugs</h2>
+          <a class="source" href="https://www.emmalacey.com/" target="_blank" rel="noopener noreferrer">Open source
+            ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Tableware" data-title="emma lacey tacit porcelain mugs">
+        <a class="image-link" href="https://www.emmalacey.com/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/62f4bf05abd1ea03de24eb60/1660736212901-ZMRNB8JCRWU4MSLSCNY9/Tacit%2BPorcelain%2BMug%2Bby%2BEmma%2BLacey.jpeg"
+            alt="Emma Lacey Tacit porcelain mugs" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">39</span>
+          <span class="tag">Tableware</span>
+          <h2>Emma Lacey Tacit porcelain mugs</h2>
+          <a class="source" href="https://www.emmalacey.com/" target="_blank" rel="noopener noreferrer">Open source
+            ↗</a>
+        </div>
+      </article>
+
+      <article class="card" data-category="Tableware" data-title="tattva handmade teal ceramic collection">
+        <a class="image-link" href="https://tattvahandmade.com/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://tattvahandmade.com/cdn/shop/files/FEA533E3-BFD4-4A7B-8475-25C3265444EC_1_201_a_600x600%402x.heic?v=1732518498"
+            alt="Tattva handmade teal ceramic collection" loading="lazy"
+            onerror="this.closest('.card').classList.add('image-error');">
+        </a>
+        <div class="card-body">
+          <span class="number">40</span>
+          <span class="tag">Tableware</span>
+          <h2>Tattva handmade teal ceramic collection</h2>
+          <a class="source" href="https://tattvahandmade.com/" target="_blank" rel="noopener noreferrer">Open source
+            ↗</a>
+        </div>
+      </article>
+
+    </section>
+  </main>
+  <footer>KADAVA · 40-image reference library · Prepared September 2026</footer>
+  <script>
+    const buttons = document.querySelectorAll('.filter');
+    const cards = document.querySelectorAll('.card');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        cards.forEach(card => {
+          card.style.display = filter === 'all' || card.dataset.category === filter ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
