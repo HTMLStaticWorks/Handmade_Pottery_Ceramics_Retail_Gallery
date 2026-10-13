@@ -241,7 +241,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1.05fr;
   gap: 5vw;
-  padding: 1.5vw 6vw 4vw;
+  padding: 0.75vw 6vw 2vw;
   align-items: center;
 }
 
@@ -341,7 +341,7 @@ h2 em {
 }
 
 .image-a {
-  background-image: url("https://www.slowpottery.com/cdn/shop/files/Slowpottery_Store_Update_Been_A_While-7_756x948.jpg?v=1711793393")
+  background-image: url("https://www.slowpottery.com/cdn/shop/files/Slowpottery_Store_Update_Been_A_While-7.jpg?v=1711793393")
 }
 
 .floating-note {
@@ -369,7 +369,7 @@ h2 em {
 
 /* Base Intro Spacing */
 .intro {
-  padding: 7vw 8vw;
+  padding: 3.5vw 8vw;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -726,7 +726,7 @@ h2 em {
    4. ARTSPACE PAGE: Artist Residency Split Spotlight
    ========================================================================== */
 .artspace-spotlight-section {
-  padding: 6vw 8vw;
+  padding: 3vw 8vw;
 }
 
 .spotlight-split {
@@ -803,7 +803,7 @@ h2 em {
    5. COLLECTIONS PAGE: Craft Specs Breakdown Table
    ========================================================================== */
 .collections-breakdown-section {
-  padding: 6vw 8vw;
+  padding: 3vw 8vw;
 }
 
 .breakdown-grid {
@@ -866,7 +866,7 @@ h2 em {
    COLLECTION NOTES SECTION (COLLECTIONS PAGE)
    ========================================================================== */
 .collection-notes-section {
-  padding: 6vw 8vw;
+  padding: 3vw 8vw;
 }
 
 .notes-header-grid {
@@ -1010,7 +1010,7 @@ h2 em {
    CONTACT HUB & SOCIAL SECTION (CONNECT PAGE & GLOBAL)
    ========================================================================== */
 .contact-hub-section {
-  padding: 6vw 8vw;
+  padding: 3vw 8vw;
 }
 
 .contact-cards-grid {
@@ -1143,7 +1143,7 @@ h2 em {
 }
 
 .section {
-  padding: 8vw 8vw
+  padding: 4vw 8vw
 }
 
 .section-head {
@@ -1210,7 +1210,7 @@ h2 em {
 }
 
 .image-e {
-  background-image: url("https://www.amalfieeceramics.com/cdn/shop/products/Peppermint-Ceramic-Lavish-Tea-Set-of-11-Pieces-Amalfiee-Ceramics-1678928185_1080x.jpg?v=1678928187")
+  background-image: url("https://www.amalfieeceramics.com/cdn/shop/products/Peppermint-Ceramic-Lavish-Tea-Set-of-11-Pieces-Amalfiee-Ceramics-1678928185.jpg?v=1678928187")
 }
 
 .product-image:after {
@@ -1317,7 +1317,7 @@ h2 em {
 }
 
 .image-l {
-  background-image: url("https://theindiashop.co.uk/cdn/shop/products/sa421-_1of1_1445x.jpg?v=1655470831")
+  background-image: url("https://theindiashop.co.uk/cdn/shop/products/sa421-_1of1.jpg?v=1655470831")
 }
 
 .image-m {
@@ -1340,7 +1340,7 @@ h2 em {
 }
 
 .image-f {
-  background-image: url("https://cdn.shopify.com/s/files/1/2784/4712/files/Slowpottery_Store_Update_Been_A_While-2_480x480.jpg?v=1711793384")
+  background-image: url("https://cdn.shopify.com/s/files/1/2784/4712/files/Slowpottery_Store_Update_Been_A_While-2.jpg?v=1711793384")
 }
 
 .studio-copy {
@@ -1432,7 +1432,7 @@ h2 em {
 }
 
 .image-j {
-  background-image: url("https://www.slowpottery.com/cdn/shop/files/Slowpottery_Store_Update_Been_A_While-7_756x948.jpg?v=1711793393")
+  background-image: url("https://www.slowpottery.com/cdn/shop/files/Slowpottery_Store_Update_Been_A_While-7.jpg?v=1711793393")
 }
 
 /* Custom / Commissions */
@@ -1986,11 +1986,11 @@ textarea {
 
   .custom {
     grid-template-columns: 1fr;
-    padding: 10vw 6vw
+    padding: 5vw 6vw
   }
 
   .connect {
-    padding: 10vw 6vw
+    padding: 5vw 6vw
   }
 
   .footer-grid {
@@ -2107,7 +2107,7 @@ textarea {
   }
 
   .intro {
-    padding: 22vw 8vw
+    padding: 11vw 8vw
   }
 
   .intro h2,
@@ -2119,7 +2119,7 @@ textarea {
   }
 
   .section {
-    padding: 18vw 5vw
+    padding: 9vw 5vw
   }
 
   .section-head {
@@ -2165,7 +2165,7 @@ textarea {
   }
 
   .studio-copy {
-    padding-top: 10vw
+    padding-top: 5vw
   }
 
   .art-grid {
@@ -2183,12 +2183,12 @@ textarea {
   }
 
   .custom {
-    padding: 18vw 7vw;
+    padding: 9vw 7vw;
     gap: 50px
   }
 
   .connect {
-    padding: 18vw 7vw;
+    padding: 9vw 7vw;
     gap: 45px
   }
 
@@ -2227,7 +2227,7 @@ textarea {
 /* Section 1: Craft Process */
 .craft-process {
   background: #ede3d3;
-  padding: 8vw 8vw;
+  padding: 4vw 8vw;
   border-top: 1px solid rgba(43, 41, 37, 0.08);
   border-bottom: 1px solid rgba(43, 41, 37, 0.08);
 }
@@ -2315,14 +2315,14 @@ textarea {
 
 /* Section 2: Featured Showcase Section */
 .featured-showcase {
-  padding: 8vw 8vw;
+  padding: 4vw 8vw;
 }
 
 /* Section 3: Collector Stories & Testimonials */
 .testimonials-section {
   background: #23201d;
   color: #f5f0e7;
-  padding: 9vw 8vw;
+  padding: 4.5vw 8vw;
   position: relative;
   overflow: hidden;
 }
@@ -2437,7 +2437,7 @@ textarea {
 .material-palette {
   background: #23201d;
   color: #f5f0e7;
-  padding: 8vw 8vw;
+  padding: 4vw 8vw;
 }
 
 .material-palette h2 {
@@ -2491,7 +2491,7 @@ textarea {
 /* Interior Gallery Section */
 .interior-gallery {
   background: #f5f0e7;
-  padding: 8vw 8vw;
+  padding: 4vw 8vw;
 }
 
 .interior-grid {
@@ -2551,7 +2551,7 @@ textarea {
 /* Kiln Journal Drops Section */
 .kiln-journal {
   background: #ede3d3;
-  padding: 8vw 8vw;
+  padding: 4vw 8vw;
   border-top: 1px solid rgba(43, 41, 37, 0.08);
 }
 
@@ -2621,7 +2621,7 @@ textarea {
 .curator-statement {
   background: #302b26;
   color: #f5f0e7;
-  padding: 9vw 12vw;
+  padding: 4.5vw 12vw;
   text-align: center;
 }
 
@@ -3824,7 +3824,7 @@ textarea {
 
 /* Shop Page Extension Sections */
 .craft-materials-section {
-  padding: 8vw 8vw;
+  padding: 4vw 8vw;
   background: #efe6d8;
   border-top: 1px solid rgba(43, 41, 37, 0.1);
   border-bottom: 1px solid rgba(43, 41, 37, 0.1);
@@ -3836,11 +3836,11 @@ textarea {
 }
 
 .shop-care-banner {
-  padding: 6vw 8vw;
+  padding: 3vw 8vw;
   background: #2b2925;
   color: #f5f0e7;
   border-radius: 16px;
-  margin: 6vw 8vw;
+  margin: 3vw 8vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3858,3 +3858,186 @@ textarea {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   FINAL CONSISTENCY LAYER (header, buttons, links, sections)
+   ========================================================================== */
+
+/* ---- Header: uniform 38px control height, shared vertical centre ---- */
+.site-header { align-items: center !important; }
+.brand { align-items: center !important; height: 44px; }
+.brand-logo-img { height: 40px !important; max-width: 170px !important; }
+.header-actions { display: flex !important; align-items: center !important; gap: 10px !important; height: 38px; }
+.nav { align-items: center !important; }
+
+@media (min-width: 1051px) {
+  .nav a:not(.header-connect-btn) {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 38px !important;
+    padding: 0 14px !important;
+    line-height: 1 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+.header-connect-btn,
+.nav a.header-connect-btn,
+.header-actions .header-connect-btn {
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 20px !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ---- Unified button system ---- */
+.button,
+button.button {
+  box-sizing: border-box !important;
+  height: 52px !important;
+  min-height: 52px !important;
+  min-width: 200px !important;
+  padding: 0 28px !important;
+  gap: 14px !important;
+  border: 1.5px solid transparent !important;
+  border-radius: 999px !important;
+  font: 600 13.5px/1 Inter, sans-serif !important;
+  letter-spacing: .04em !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 14px rgba(43, 41, 37, 0.12) !important;
+  transition: background-color .3s ease, color .3s ease, transform .3s ease, box-shadow .3s ease !important;
+}
+
+/* Primary */
+.button.button-dark,
+.button.button-dark.spec-btn,
+.button.button-dark.button-dark-contrast {
+  background: #2b2925 !important;
+  border-color: #2b2925 !important;
+  color: #ffffff !important;
+  padding: 0 28px !important;
+}
+.button.button-dark:hover,
+.button.button-dark.spec-btn:hover,
+.button.button-dark.button-dark-contrast:hover {
+  background: #8d6049 !important;
+  border-color: #8d6049 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(141, 96, 73, 0.3) !important;
+}
+
+/* Secondary (visible on both light pages and dark panels, hover always contrasts) */
+.button.button-light {
+  background: #e6d7c5 !important;
+  border-color: #e6d7c5 !important;
+  color: #2b2925 !important;
+}
+.button.button-light:hover {
+  background: #8d6049 !important;
+  border-color: #8d6049 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(141, 96, 73, 0.3) !important;
+}
+
+/* Dark theme */
+[data-theme="dark"] .button.button-dark,
+[data-theme="dark"] .button.button-dark.spec-btn,
+[data-theme="dark"] .button.button-dark.button-dark-contrast {
+  background: #d68d68 !important;
+  border-color: #d68d68 !important;
+  color: #171513 !important;
+  padding: 0 28px !important;
+}
+[data-theme="dark"] .button.button-dark:hover,
+[data-theme="dark"] .button.button-dark.spec-btn:hover,
+[data-theme="dark"] .button.button-dark.button-dark-contrast:hover {
+  background: #f5efe6 !important;
+  border-color: #f5efe6 !important;
+  color: #171513 !important;
+}
+[data-theme="dark"] .button.button-light {
+  background: #3a342e !important;
+  border-color: #3a342e !important;
+  color: #f5f0e7 !important;
+}
+[data-theme="dark"] .button.button-light:hover {
+  background: #d68d68 !important;
+  border-color: #d68d68 !important;
+  color: #171513 !important;
+}
+
+/* Header connect button keeps the same primary palette */
+.header-connect-btn { border-width: 1.5px !important; }
+
+/* Hero / section-head buttons never stretch differently */
+.section-head .button, .hero-copy .button { align-self: flex-start; }
+
+/* ---- Home 1: "Read about our studio philosophy" link colour (no visited purple) ---- */
+.intro-action,
+.intro-action:visited {
+  color: #8d6049 !important;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+  transition: color .25s ease;
+}
+.intro-action:hover { color: #2b2925 !important; }
+[data-theme="dark"] .intro-action,
+[data-theme="dark"] .intro-action:visited { color: #d68d68 !important; }
+[data-theme="dark"] .intro-action:hover { color: #f5efe6 !important; }
+
+/* ---- Home 2: RAW MATERIALS centred, balanced, adjustable cards ---- */
+.material-palette .section-head {
+  align-items: center !important;
+  text-align: center !important;
+  max-width: 760px;
+  margin: 0 auto 45px !important;
+}
+.material-palette .section-head > div { align-items: center !important; }
+.material-palette .section-head .muted { margin: 0 auto !important; text-align: center; }
+.material-palette .materials-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  max-width: 1200px;
+  margin: 0 auto !important;
+  align-items: stretch;
+}
+.material-palette .material-card { height: 100%; box-sizing: border-box; }
+@media (min-width: 600px) and (max-width: 1098px) {
+  .material-palette .materials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .material-palette .material-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (max-width: 599px) {
+  .material-palette .materials-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ---- Shop: custom ceramics banner CTA ---- */
+.shop-care-banner .button.button-light { white-space: nowrap; flex-shrink: 0; }
+
+/* ---- Artspace residency CTA ---- */
+.spotlight-dark-panel .button.button-light { margin-top: 8px; }
+
+/* ---- Connect page: embedded map ---- */
+.studio-map-card { height: 420px; }
+.studio-map-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
+.studio-map-overlay { position: absolute !important; left: 20px; bottom: 20px; z-index: 2; text-align: left !important; max-width: 340px; }
+.studio-map-overlay .button { min-width: 0 !important; width: 100%; height: 44px !important; min-height: 44px !important; }
+[data-theme="dark"] .studio-map-frame { filter: invert(0.9) hue-rotate(180deg) brightness(0.9) contrast(0.95); }
+@media (max-width: 600px) {
+  .studio-map-card { height: 520px; }
+  .studio-map-frame { height: 55%; }
+  .studio-map-overlay { left: 12px; right: 12px; bottom: 12px; max-width: none; }
+}
+@media (min-width: 1051px) { .nav { gap: 6px; } }
+
